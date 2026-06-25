@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>尊龙凯时 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      background: #f2f4f6;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 页眉 / 引导区 */
+    .hero {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #1d2b3a;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .sub {
+      color: #4b5a6b;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #d0d7de;
+      padding-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    /* 卡片通用样式 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 680px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8ee;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      padding: 1.8rem 1.5rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 6px 18px rgba(0, 20, 40, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: #1e2b3c;
+      border-left: 4px solid #8a9bb0;
+      padding-left: 0.8rem;
+    }
+
+    .card p {
+      font-size: 0.96rem;
+      color: #2f3f50;
+      margin-bottom: 0.6rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.94rem;
+      color: #2f3f50;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #6e8298;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e9edf2;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      color: #2f4053;
+      margin-top: 0.6rem;
+      border: 1px solid #d8dfe8;
+    }
+
+    /* 提示区块 */
+    .notice-block {
+      margin: 2.8rem 0;
+      background: #f9fafc;
+      border-left: 5px solid #8f9fb2;
+      border-radius: 0 12px 12px 0;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .notice-block h3 {
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: #1d2b3a;
+    }
+
+    .notice-block p {
+      color: #304153;
+      margin-bottom: 0.3rem;
+    }
+
+    .notice-block .link-embed {
+      margin-top: 0.8rem;
+    }
+
+    /* 相关信息区 —— 简洁FAQ摘要 */
+    .faq-mini {
+      margin-top: 2rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid #dae0e8;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #1e2d3e;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #20303f;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      color: #3b4e62;
+      font-size: 0.93rem;
+      padding-left: 0.2rem;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      color: #6f8197;
+      font-size: 0.9rem;
+      border-top: 1px solid #d7dee6;
+      padding-top: 2rem;
+    }
+
+    .footer-note a {
+      color: #2f4057;
+      text-decoration: none;
+      border-bottom: 1px dotted #8b9bb0;
+    }
+
+    a {
+      color: #2b3f57;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #6d829b;
+    }
+
+    /* 指向尊龙凯时的链接在卡片/句子中自然出现 */
+    .inline-link-highlight {
+      font-weight: 500;
+      color: #1f3348;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 引导 -->
+  <div class="hero">
+    <h1>📘 尊龙凯时 · 知识库</h1>
+    <div class="sub">从平台用途到使用场景 · 快速识别价值</div>
+  </div>
+
+  <!-- 卡片网格 – 目录感布局 -->
+  <div class="card-grid">
+
+    <!-- 卡片：平台概览 -->
+    <div class="card">
+      <h2>平台概览</h2>
+      <p>「尊龙凯时」作为一个综合性线上服务站点，聚合了多领域的信息资源与功能模块。用户可通过统一入口了解各项服务边界，并根据自身需求查找对应内容。</p>
+      <p>当前页面作为介绍型索引，帮助初次接触者判断平台是否契合其目标。</p>
+      <span class="tag">定位 · 聚合</span>
+    </div>
+
+    <!-- 卡片：主要特点 -->
+    <div class="card">
+      <h2>特点与结构</h2>
+      <ul>
+        <li>模块化分区，各功能独立且相互关联</li>
+        <li>持续更新的内容库与工具型页面</li>
+        <li>简洁的访问路径，无需复杂注册即可浏览核心部分</li>
+        <li>针对不同用户群体提供差异化的信息层级</li>
+      </ul>
+      <span class="tag">模块化 · 低门槛</span>
+    </div>
+
+    <!-- 卡片：典型使用场景 -->
+    <div class="card">
+      <h2>使用场景举例</h2>
+      <p>日常查询行业资料、比对服务类型、获取最新动态；或是通过平台索引快速定位到所需的说明文档。无论个人研究还是工作参考，均可将 <a href="https://space-zunlongkaishi.com" class="inline-link-highlight">尊龙凯时</a> 作为起点进行信息收集。</p>
+      <p style="margin-top:0.3rem;">用户无需事先熟悉复杂术语，从首页导航即可进入各专区。</p>
+      <span class="tag">检索 · 参考</span>
+    </div>
+
+  </div>
+
+  <!-- 说明区 / 提示区 （合并为一块引导卡片） -->
+  <div class="notice-block">
+    <h3>📌 使用前提示</h3>
+    <p>本介绍页仅用于提供平台的基础认知框架。具体功能实现、界面细节及服务条款，以 <a href="https://space-zunlongkaishi.com">尊龙凯时</a> 实际页面为准。</p>
+    <p>建议新用户先浏览「平台概览」与「特点与结构」卡片，再进入对应模块深入了解。若需要快速查阅常见问题，可参考下方FAQ摘要。</p>
+    <div class="link-embed">
+      <span style="background:#eef2f8; padding:0.2rem 1rem; border-radius:30px; font-size:0.85rem;">🔍 直接前往 → <a href="https://space-zunlongkaishi.com" style="border-bottom:1px solid #8a9bb0;">尊龙凯时</a></span>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 / 相关信息区 -->
+  <div class="faq-mini">
+    <h3>❓ 常见问题摘要</h3>
+
+    <div class="faq-item">
+      <span class="q">Q：我需要注册才能查看内容吗？</span>
+      <span class="a">大部分公开信息可直接浏览，部分交互功能视具体模块而定。建议直接访问 <a href="https://space-zunlongkaishi.com">尊龙凯时</a> 确认当前规则。</span>
+    </div>
+
+    <div class="faq-item">
+      <span class="q">Q：平台主要覆盖哪些领域？</span>
+      <span class="a">涵盖资讯、工具索引、数据参考及若干专题页面，领域分布较广。可通过站内分类导航快速筛选。</span>
+    </div>
+
+    <div class="faq-item">
+      <span class="q">Q：是否有移动端适配？</span>
+      <span class="a">当前页面及平台主站均支持响应式布局，在手机与平板设备上可正常使用。</span>
+    </div>
+
+    <div style="margin-top:0.8rem; font-size:0.9rem; color:#3e5369;">
+      📚 更多细节可前往 <a href="https://space-zunlongkaishi.com">尊龙凯时</a> 各分区查阅。
+    </div>
+  </div>
+
+  <!-- 页脚区（也是相关信息的一部分） -->
+  <div class="footer-note">
+    <p>内容索引 · 基于公开信息整理 | 页面仅作为介绍入口，具体以实际站点为准</p>
+    <p style="margin-top:0.3rem;">本页链接指向 <a href="https://space-zunlongkaishi.com">尊龙凯时</a></p>
+  </div>
+
+</div>
+</body>
+</html>
